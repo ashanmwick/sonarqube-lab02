@@ -1,18 +1,20 @@
-package main.java.com.example;
+package com.example;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App {
 
-    public static void main(String[] args) throws Exception {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
+    public static void main(String[] args) throws Exception {
         Calculator calc = new Calculator();
 
-        // Modified to use the duplicated "add-again" operation
-        System.out.println(calc.calculate(10, 5, "add-again"));
+        logger.info("Calculation result: {}",
+                calc.calculate(10, 5, "add-again"));
 
         UserService service = new UserService();
         service.findUser("admin");
-        
-        // NEW dangerous call
-        service.deleteUser("admin"); 
+        service.deleteUser("admin");
     }
 }
